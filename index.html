@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Chazel</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!--
+	<script src="./js/articles.js"></script>
+	-->
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poiret+One">
+	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/cwtexhei.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/cwtexming.css">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+<span id="top"></span>
+<div id="goto-top"><a href="#top">Top</a></div>
+
+<div id="wrapper">
+	<header>
+		<div><!-- for flex layout -->
+			<h1>Chazel</h1>
+			<span>「我是塞車之神，你也是塞車之神，這座島上的所有人，都是塞車之神。」</span>
+		</div>
+	</header>
+	<!-- end header -->
+
+	<nav id="nav">
+		<ul>
+			<li><a href="#novel">長篇小說 - 泣城</a></li>
+			<li><a href="#short-story">短篇小說</a></li>
+			<li><a href="#flash-fiction">極短篇小說</a></li>
+		</ul>
+	</nav>
+	<!-- end nav -->
+
+	<nav id="nav-fixed">
+		<span>Chazel</span>
+		<ul>
+			<li><a href="#novel">長篇小說 - 泣城</a></li>
+			<li><a href="#short-story">短篇小說</a></li>
+			<li><a href="#flash-fiction">極短篇小說</a></li>
+		</ul>
+	</nav>
+	<!-- end nav-fixed -->
+
+	<div id="main-wrapper">
+		<section id="novel">
+			<h2>長篇小說 - 泣城</h2>
+			<label id="tab-label-2" for="tab-radio-2" onclick="activeTab(this)" class="active">掠食之章</label>
+			<label id="tab-label-1" for="tab-radio-1" onclick="activeTab(this)">豢養之章（完結）</label>
+
+			<input type="radio" name="chapter" id="tab-radio-2" checked>
+			<div class="chapter-wrapper">
+				<div class="chapter-col">
+					<div class="cover cover-novel"></div>
+				</div>
+				<div class="chapter-col">
+					<span>最新回</span>
+					<h3>泣城 - 掠食之章 (8)</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+				<div class="select-chapter">
+					<button>其他章節</button>
+				</div>
+			</div>
+
+			<input type="radio" name="chapter" id="tab-radio-1">
+			<div class="chapter-wrapper">
+				<div class="chapter-col">
+					<div class="cover cover-novel"></div>
+				</div>
+				<div class="chapter-col">
+					<span>最新回</span>
+					<h3>泣城 - 豢養之章 ()</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+				<div class="select-chapter">
+					<button>其他章節</button>
+				</div>
+			</div>
+		</section>
+		<!-- end section novel -->
+
+		<section id="short-story">
+			<h2>短篇小說</h2>
+			<div id="recent-post-page-1">
+				<div class="grid">
+					<div class="cover"></div>
+					<span class="category">白居易</span>
+					<h3>琵琶行</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+				<div class="grid">
+					<div class="cover"></div>
+					<span class="category">白居易</span>
+					<h3>琵琶行</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+				<div class="grid">
+					<div class="cover"></div>
+					<span class="category">白居易</span>
+					<h3>琵琶行</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			<div class="paging">
+				<button class="active">1</button>
+				<button>2</button>
+				<button>3</button>
+				<button>4</button>
+				<button>5</button>
+			</div>
+		</section>
+		<!-- end section short-story -->
+
+		<section id="flash-fiction" class="no-border">
+			<h2>極短篇小說</h2>
+			<div id="recent-post-page-1">
+				<div class="grid">
+					<div class="cover"></div>
+					<span class="category">白居易</span>
+					<h3>琵琶行</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+				<div class="grid">
+					<div class="cover"></div>
+					<span class="category">白居易</span>
+					<h3>琵琶行</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+				<div class="grid">
+					<div class="cover"></div>
+					<span class="category">白居易</span>
+					<h3>琵琶行</h3>
+					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			<div class="paging">
+				<button class="active">1</button>
+				<button>2</button>
+				<button>3</button>
+				<button>4</button>
+				<button>5</button>
+			</div>
+		</section>
+		<!-- end section flash-fiction -->
+	</div>
+	<!-- end main-wrapper -->
+</div>
+
+<footer id="about">
+	<div id="footer-wrapper">
+		<div class="footer-col">
+			<img src="./img/chazel.jpg">陳建佐 Chazel
+		</div>
+		<div class="footer-col">
+			<img src="./img/ryan.jpg">陳柏翰 Ryan
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</footer>
+
+<script>
+//nav
+var nav = document.getElementById("nav");
+var navFixed = document.getElementById("nav-fixed");
+
+function handleNav() {
+	if(nav.getBoundingClientRect().top < -50) {
+		navFixed.style.transition = "top 0s, opacity 0.5s";
+		navFixed.style.top = "0";
+		navFixed.style.opacity = 1;
+	}
+	else {
+		navFixed.style.transition = "top 0s 0.5s, opacity 0.5s"; //top delay 0.5s
+		navFixed.style.top = "-1000px";
+		navFixed.style.opacity = 0;
+	}
+}
+
+window.addEventListener("scroll", function(){handleNav(); }, false);
+
+
+//smooth scrolling
+$(function() {
+	$('a[href*=#]:not([href=#])').click(function() {
+		if(location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+			if (target.length) {
+				$('html,body').animate({scrollTop: target.offset().top - 80}, 800);
+        		return false;
+        	}
+        }
+    });
+});
+
+
+function activeTab(target) {
+	for(var i = 1; i <= 2; i++)
+		document.getElementById("tab-label-" + i).className = "";
+	target.className = "active";
+}
+</script>
+</body>
+</html>
