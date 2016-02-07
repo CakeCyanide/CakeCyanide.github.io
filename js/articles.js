@@ -67,12 +67,12 @@ for(var i = 1; i <= 2; i++) {
 	var c = chapters[i - 1];
 	var a = c.articleList[c.articleList.length - 1];
 	var output = [];
-	output.push("<div class=\"chapter-col\">");
+	output.push("<div class=\"chapter-col\" style=\"width:340px;\">");
 	output.push("<div class=\"cover cover-novel\" style=\"background: url('./img/" + a.coverID + ".jpg') center center; background-size: cover;\"></div>");
 	output.push("</div>");
 	//end article cover
 	output.push("<div class=\"chapter-col\">");
-	output.push("<span>最新回</span>");
+	output.push("<span>最新一回</span>");
 	output.push("<h3>" + a.title +"</h3>");
 	output.push("<p>" + a.content.replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...</p>");
 	output.push("</div>");
