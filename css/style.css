@@ -338,7 +338,7 @@ footer {
 
 
 .cover {
-	background: url("../wolf.jpg") center center;
+	background: url("../img/wolf.jpg") center center;
 	background-size: cover;
 	cursor: pointer;
 	width: 310px;
@@ -347,7 +347,7 @@ footer {
 	transition: all 0.2s ease-out;
 }
 .cover-novel {
-	background: url("../wolf.jpg") center center;
+	background: url("../img/wolf.jpg") center center;
 	background-size: cover;
 	width: 320px;
 	height: 240px;
