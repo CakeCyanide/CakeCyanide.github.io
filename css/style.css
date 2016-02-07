@@ -338,17 +338,13 @@ footer {
 
 
 .cover {
-	background: url("../img/wolf.jpg") center center;
-	background-size: cover;
 	cursor: pointer;
 	width: 310px;
 	height: 232.5px;
-	opacity: 0.9;
+	opacity: 0.8;
 	transition: all 0.2s ease-out;
 }
 .cover-novel {
-	background: url("../img/wolf.jpg") center center;
-	background-size: cover;
 	width: 320px;
 	height: 240px;
 }

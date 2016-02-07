@@ -4,9 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Chazel</title>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<!--
-	<script src="./js/articles.js"></script>
-	-->
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poiret+One">
 	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/cwtexhei.css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/cwtexming.css">
@@ -52,102 +49,14 @@
 			<label id="tab-label-1" for="tab-radio-1" onclick="activeTab(this)">豢養之章（完結）</label>
 
 			<input type="radio" name="chapter" id="tab-radio-2" checked>
-			<div class="chapter-wrapper">
-				<div class="chapter-col">
-					<div class="cover cover-novel"></div>
-				</div>
-				<div class="chapter-col">
-					<span>最新回</span>
-					<h3>泣城 - 掠食之章 (8)</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-				<div class="select-chapter">
-					<button>其他章節</button>
-				</div>
-			</div>
+			<div id="latest-chapter-2" class="chapter-wrapper"></div>
 
 			<input type="radio" name="chapter" id="tab-radio-1">
-			<div class="chapter-wrapper">
-				<div class="chapter-col">
-					<div class="cover cover-novel"></div>
-				</div>
-				<div class="chapter-col">
-					<span>最新回</span>
-					<h3>泣城 - 豢養之章 ()</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-				<div class="select-chapter">
-					<button>其他章節</button>
-				</div>
-			</div>
+			<div id="latest-chapter-1" class="chapter-wrapper"></div>
 		</section>
-		<!-- end section novel -->
 
-		<section id="short-story">
-			<h2>短篇小說</h2>
-			<div id="recent-post-page-1">
-				<div class="grid">
-					<div class="cover"></div>
-					<span class="category">白居易</span>
-					<h3>琵琶行</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-				<div class="grid">
-					<div class="cover"></div>
-					<span class="category">白居易</span>
-					<h3>琵琶行</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-				<div class="grid">
-					<div class="cover"></div>
-					<span class="category">白居易</span>
-					<h3>琵琶行</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-			<div class="paging">
-				<button class="active">1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
-				<button>5</button>
-			</div>
-		</section>
-		<!-- end section short-story -->
-
-		<section id="flash-fiction" class="no-border">
-			<h2>極短篇小說</h2>
-			<div id="recent-post-page-1">
-				<div class="grid">
-					<div class="cover"></div>
-					<span class="category">白居易</span>
-					<h3>琵琶行</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-				<div class="grid">
-					<div class="cover"></div>
-					<span class="category">白居易</span>
-					<h3>琵琶行</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-				<div class="grid">
-					<div class="cover"></div>
-					<span class="category">白居易</span>
-					<h3>琵琶行</h3>
-					<p>潯陽江頭夜送客，楓葉荻花秋瑟瑟。主人下馬客在船，舉酒欲飲無管絃。醉不成歡慘將別，別時茫茫江浸月。忽聞水上琵琶聲，主人忘歸客不發。尋聲暗問彈者誰，琵琶聲停欲語遲。移船相近邀相見，添酒回燈重開宴。</p>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-			<div class="paging">
-				<button class="active">1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
-				<button>5</button>
-			</div>
-		</section>
-		<!-- end section flash-fiction -->
+		<section id="short-story"></section>
+		<section id="flash-fiction" class="no-border"></section>
 	</div>
 	<!-- end main-wrapper -->
 </div>
@@ -206,5 +115,6 @@ function activeTab(target) {
 	target.className = "active";
 }
 </script>
+<script src="./js/articles.js"></script>
 </body>
 </html>
