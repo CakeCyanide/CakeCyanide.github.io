@@ -44,8 +44,8 @@ body {
 	background: rgba(50, 50, 50, 0.9);
 }
 
-/* wrapper */
-#wrapper {
+/* outer-wrapper */
+#outer-wrapper {
 	width: 1000px;
 	margin: auto;
 }
@@ -190,17 +190,25 @@ input[type="radio"] + div.chapter-wrapper {
 	display: none;
 }
 input[type="radio"]:checked + div.chapter-wrapper {
-	display: flex;
+	display: block;
 }
 .chapter-wrapper {
-	height: 270px;
+	font-size: 0;
 	padding: 5px 0;
 	margin: 20px 0 30px;
 	position: relative;
 }
 .chapter-col {
 	display: inline-block;
-	padding: 10px 10px;
+	height: 260px;
+	padding: 10px;
+	vertical-align: text-top;
+}
+.chapter-col-1 {
+	width: 340px;
+}
+.chapter-col-2 {
+	width: 650px;
 }
 .chapter-col > span {
 	color: rgb(180, 0, 40);

@@ -2,20 +2,17 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Chazel</title>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poiret+One">
-	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/cwtexhei.css">
-	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/cwtexming.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Poiret+One">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/cwtexhei.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/cwtexming.css">
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
-<span id="top"></span>
+<body id="top">
 <div id="goto-top"><a href="#top">Top</a></div>
-
-<div id="wrapper">
+<div id="outer-wrapper">
 	<header>
 		<div><!-- for flex layout -->
 			<h1>Chazel</h1>
@@ -32,7 +29,6 @@
 		</ul>
 	</nav>
 	<!-- end nav -->
-
 	<nav id="nav-fixed">
 		<span>Chazel</span>
 		<ul>
@@ -48,53 +44,31 @@
 			<h2>長篇小說 - 泣城</h2>
 			<label id="tab-label-2" for="tab-radio-2" onclick="activeTab(this)" class="active">掠食之章</label>
 			<label id="tab-label-1" for="tab-radio-1" onclick="activeTab(this)">豢養之章（完結）</label>
-
 			<input type="radio" name="chapter" id="tab-radio-2" checked>
-			<div id="latest-chapter-2" class="chapter-wrapper"></div>
-
+			<div id="chapter-wrapper-2" class="chapter-wrapper"></div>
 			<input type="radio" name="chapter" id="tab-radio-1">
-			<div id="latest-chapter-1" class="chapter-wrapper"></div>
+			<div id="chapter-wrapper-1" class="chapter-wrapper"></div>
 		</section>
-
 		<section id="short-story"></section>
 		<section id="flash-fiction" class="no-border"></section>
 	</div>
 	<!-- end main-wrapper -->
 </div>
+<!-- end outer-wrapper -->
 
 <footer id="about">
 	<div id="footer-wrapper">
 		<div class="footer-col">
-			<img src="./img/chazel.jpg">陳建佐 Chazel
+			<img src="./img/footer/chazel.jpg">陳建佐 Chazel
 		</div>
 		<div class="footer-col">
-			<img src="./img/ryan.jpg">陳柏翰 Ryan
+			<img src="./img/footer/ryan.jpg">陳柏翰 Ryan
 		</div>
 		<div style="clear: both;"></div>
 	</div>
 </footer>
 
 <script>
-//nav
-var nav = document.getElementById("nav");
-var navFixed = document.getElementById("nav-fixed");
-
-function handleNav() {
-	if(nav.getBoundingClientRect().top < -50) {
-		navFixed.style.transition = "top 0s, opacity 0.5s";
-		navFixed.style.top = "0";
-		navFixed.style.opacity = 1;
-	}
-	else {
-		navFixed.style.transition = "top 0s 0.5s, opacity 0.5s"; //top delay 0.5s
-		navFixed.style.top = "-1000px";
-		navFixed.style.opacity = 0;
-	}
-}
-
-window.addEventListener("scroll", function(){handleNav(); }, false);
-
-
 //smooth scrolling
 $(function() {
 	$('a[href*=#]:not([href=#])').click(function() {
@@ -108,12 +82,37 @@ $(function() {
         }
     });
 });
+</script>
+<script>
+//nav
+var nav = document.getElementById("nav");
+var navFixed = document.getElementById("nav-fixed");
 
-
+function handleNav() {
+	if(nav.getBoundingClientRect().top < -50) {
+		navFixed.style.transition = "top 0s, opacity 0.5s";
+		navFixed.style.top = "0";
+		navFixed.style.opacity = 1;
+	}
+	else {
+		navFixed.style.transition = "top 0s 0.5s, opacity 0.5s"; //top delay 0.5s
+		navFixed.style.top = "-9999px";
+		navFixed.style.opacity = 0;
+	}
+}
+window.addEventListener("scroll", function(){handleNav(); }, false);
+</script>
+<script>
 function activeTab(target) {
 	for(var i = 1; i <= 2; i++)
 		document.getElementById("tab-label-" + i).className = "";
 	target.className = "active";
+}
+</script>
+<script>
+function loadLatestNovel(chapterID) {
+}
+function loadSummary(section, page) {
 }
 </script>
 <script src="./js/articles.js"></script>

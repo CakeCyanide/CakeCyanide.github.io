@@ -67,18 +67,18 @@ for(var i = 1; i <= 2; i++) {
 	var c = chapters[i - 1];
 	var a = c.articleList[c.articleList.length - 1];
 	var output = [];
-	output.push("<div class=\"chapter-col\" style=\"width:340px;\">");
-	output.push("<div class=\"cover cover-novel\" style=\"background: url('./img/" + a.coverID + ".jpg') center center; background-size: cover;\"></div>");
+	output.push("<div class=\"chapter-col chapter-col-1\">");
+	output.push("<div class=\"cover cover-novel\" style=\"background: url('./img/cover/" + a.coverID + ".jpg') center center; background-size: cover;\"></div>");
 	output.push("</div>");
 	//end article cover
-	output.push("<div class=\"chapter-col\">");
+	output.push("<div class=\"chapter-col chapter-col-2\">");
 	output.push("<span>最新一回</span>");
 	output.push("<h3>" + a.title +"</h3>");
 	output.push("<p>" + a.content.replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...</p>");
 	output.push("</div>");
 	//end article content
 	output.push("<div class=\"select-chapter\"><button>其他章節</button></div>")
-	document.getElementById("latest-chapter-" + i).innerHTML = output.join("");
+	document.getElementById("chapter-wrapper-" + i).innerHTML = output.join("");
 }
 
 
@@ -106,7 +106,7 @@ for(var page = 1; page <= pageNum; page++) {
 			break;
 		var a = articles[articleIndex - 1];
 		output.push("<div class=\"grid\">");
-		output.push("<div class=\"cover\" style=\"background: url('./img/" + a.coverID + ".jpg') center center; background-size: cover;\"></div>");
+		output.push("<div class=\"cover\" style=\"background: url('./img/cover/" + a.coverID + ".jpg') center center; background-size: cover;\"></div>");
 		output.push("<span class=\"category\">短篇小說</span>");
 		output.push("<h3>" + a.title + "</h3>");
 		output.push("<p>" + a.content.replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...</p>");
@@ -149,7 +149,7 @@ for(var page = 1; page <= pageNum; page++) {
 			break;
 		var a = articles[articleIndex - 1];
 		output.push("<div class=\"grid\">");
-		output.push("<div class=\"cover\" style=\"background: url('./img/" + a.coverID + ".jpg') center center; background-size: cover;\"></div>");
+		output.push("<div class=\"cover\" style=\"background: url('./img/cover/" + a.coverID + ".jpg') center center; background-size: cover;\"></div>");
 		output.push("<span class=\"category\">極短篇小說</span>");
 		output.push("<h3>" + a.title + "</h3>");
 		output.push("<p>" + a.content.replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...</p>");
