@@ -12,8 +12,8 @@
 </head>
 
 <body id="top">
-<div id="goto-top">
-	<a href="#top">Top</a>
+<div id="fixed-tool">
+	<button onclick="goBack()">回前頁</button>
 </div>
 <div id="outer-wrapper">
 	<header>
@@ -121,22 +121,22 @@
 			<div id="sub-col" class="reading-col reading-col-2">
 				<div class="sub-row">
 					<span>字體大小</span>
-					<button class="btn font-size-btn">小</button>
-					<button class="btn btn-active font-size-btn">中</button>
-					<button class="btn font-size-btn">大</button>
+					<button id="font-size-btn-1" class="btn font-size-btn" onclick="setFontSize(1)">小</button>
+					<button id="font-size-btn-2" class="btn btn-active font-size-btn" onclick="setFontSize(2)">中</button>
+					<button id="font-size-btn-3" class="btn font-size-btn" onclick="setFontSize(3)">大</button>
 				</div>
 				<div class="sub-row">
 					<button id="prev" class="btn sub-btn">
 						<div>
-							<span>上一回</span>
-							<h3 id="prev-title">喵電感應</h3>
+							<span>上一篇</span>
+							<h3 id="prev-title">讀取中...</h3>
 						</div>
 					</button>
 					<button id="next" class="btn sub-btn">
 						<div>
 							<div>
-								<span>下一回</span>
-								<h3 id="next-title">勸世喵喵</h3>
+								<span>下一篇</span>
+								<h3 id="next-title">讀取中...</h3>
 							</div>
 						</div>
 					</button>
@@ -185,6 +185,12 @@ var novelChapterNum = novelArticleNum.length;
 var shortStoryPageNum = Math.ceil(shortStoryArticleNum / 3);
 var flashFictionPageNum = Math.ceil(flashFictionArticleNum / 3);
 
+
+function goBack() {
+	$("#fixed-tool").hide();
+	$("#reading").hide();
+	$("#main-index").show();
+}
 
 /*
  * smooth scrolling
@@ -240,6 +246,20 @@ function activeTab(chapter) {
 	loadNovel(chapter);
 }
 
+function setFontSize(level) {
+	//btn
+	for(var i = 1; i <= 3; i++) {
+		var tab = document.getElementById("font-size-btn-" + i);
+		tab.className = tab.className.replace(/ btn-active/g, "");
+	}
+	document.getElementById("font-size-btn-" + level).className += " btn-active";
+	var size;
+	if(level == 1) size = 14;
+	else if(level == 2) size = 16;
+	else if(level == 3) size = 20;
+	$("#reading-content").css("font-size",  size + "px");
+}
+
 
 /*
  * AJAX
@@ -252,8 +272,7 @@ function loadNovel(chapter) {
 	$.get("http://cakecyanide.github.io/text/novel/chapter-" + chapter + "/" + novelArticleNum[chapter - 1], function(data) {
 		var a = data.split("\n");
 		//load cover
-		$("#novel-cover")
-		.css({
+		$("#novel-cover").css({
 			background: "url('./img/cover/novel/" + a[0] + "') center center",
 			backgroundSize: "cover"
 		})
@@ -261,7 +280,10 @@ function loadNovel(chapter) {
 			readArticle("novel", chapter, novelArticleNum[chapter - 1]);
 		});
 		//load article
-		$("#novel-title").html(a[1]);
+		$("#novel-title").html(a[1])
+		.unbind().click(function() {
+			readArticle("novel", chapter, novelArticleNum[chapter - 1]);
+		});
 		$("#novel-content").html(a[2].replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...");
 	});
 }
@@ -320,7 +342,10 @@ function deployArticle(section, col, articleID) {
 			$("#" + section + "-" + col + "-category").html("短篇小說");
 		else if(section == "flash-fiction")
 			$("#" + section + "-" + col + "-category").html("極短篇小說");
-		$("#" + section + "-" + col + "-title").html(a[1]);
+		$("#" + section + "-" + col + "-title").html(a[1])
+		.unbind().click(function() {
+			readArticle(section, null, articleID);
+		});
 		$("#" + section + "-" + col + "-content").html(a[2].replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...");
 	});
 }
@@ -340,6 +365,7 @@ function deployPagingBtn(section) {
 
 function readArticle(section, subSection, articleID) {
 	$("#main-index").hide();
+	$("#fixed-tool").show();
 	$("#reading").show();
 
 	var articleNum;
@@ -353,28 +379,37 @@ function readArticle(section, subSection, articleID) {
 	//article
 	$("#reading-title").html("讀取中...");
 	$("#reading-content").html("讀取中...");
-	if(section == "novel") {
-		$.get("http://cakecyanide.github.io/text/novel/chapter-" + subSection + "/" + articleID, function(data) {
-			var a = data.split("\n");
-			$("#reading-title").html(a[1]);
-			$("#reading-content").html(a[2]);
-		});
-	}
-	else {
-		$.get("http://cakecyanide.github.io/text/" + section + "/" + articleID, function(data) {
-			var a = data.split("\n");
-			$("#reading-title").html(a[1]);
-			$("#reading-content").html(a[2]);
-		});
-	}
+	var src;
+	if(section == "novel") src = "http://cakecyanide.github.io/text/novel/chapter-" + subSection + "/";
+	else src = "http://cakecyanide.github.io/text/" + section + "/";
+
+	$.get(src + articleID, function(data) {
+		var a = data.split("\n");
+		$("#reading-title").html(a[1]);
+		$("#reading-content").html(a[2]);
+	});
 	//sub-col
+	$("#prev-title").html("讀取中...");
+	$("#next-title").html("讀取中...");
 	if(articleID > 1) {
-		$("#prev-title").html(123);
+		$.get(src + (articleID - 1), function(data) {
+			$("#prev-title")
+			.html(data.split("\n")[1])
+			.unbind().click(function() {
+				readArticle(section, subSection, articleID - 1);
+			});;
+		});
 		$("#prev").show();
 	} else $("#prev").hide();
 
 	if(articleID < articleNum) {
-		$("#next-title").html(456);
+		$.get(src + (articleID + 1), function(data) {
+			$("#next-title")
+			.html(data.split("\n")[1])
+			.unbind().click(function() {
+				readArticle(section, subSection, articleID + 1);
+			});
+		});
 		$("#next").show()
 	} else $("#next").hide();
 }
