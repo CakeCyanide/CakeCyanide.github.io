@@ -126,13 +126,13 @@
 					<button id="font-size-btn-3" class="btn font-size-btn" onclick="setFontSize(3)">大</button>
 				</div>
 				<div class="sub-row">
-					<button id="prev" class="btn sub-btn">
+					<button id="prev" class="btn sub-btn" onclick="prevFunc()">
 						<div>
 							<span>上一篇</span>
 							<h3 id="prev-title">讀取中...</h3>
 						</div>
 					</button>
-					<button id="next" class="btn sub-btn">
+					<button id="next" class="btn sub-btn" onclick="nextFunc()">
 						<div>
 							<div>
 								<span>下一篇</span>
@@ -363,6 +363,8 @@ function deployPagingBtn(section) {
 	$("#" + section + "-paging").html(output.join(""));
 }
 
+var prevFunc = function() {}
+var nextFunc = function() {}
 function readArticle(section, subSection, articleID) {
 	$("#main-index").hide();
 	$("#fixed-tool").show();
@@ -393,11 +395,11 @@ function readArticle(section, subSection, articleID) {
 	$("#next-title").html("讀取中...");
 	if(articleID > 1) {
 		$.get(src + (articleID - 1), function(data) {
-			$("#prev-title")
-			.html(data.split("\n")[1])
-			.unbind().click(function() {
+			$("#prev-title").html(data.split("\n")[1]);
+			prevFunc = function() {
+				console.log("load prev");
 				readArticle(section, subSection, articleID - 1);
-			});;
+			}
 		});
 		$("#prev").show();
 	} else $("#prev").hide();
@@ -405,10 +407,11 @@ function readArticle(section, subSection, articleID) {
 	if(articleID < articleNum) {
 		$.get(src + (articleID + 1), function(data) {
 			$("#next-title")
-			.html(data.split("\n")[1])
-			.unbind().click(function() {
+			.html(data.split("\n")[1]);
+			nextFunc = function() {
+				console.log("load next");
 				readArticle(section, subSection, articleID + 1);
-			});
+			}
 		});
 		$("#next").show()
 	} else $("#next").hide();
