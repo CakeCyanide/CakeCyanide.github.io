@@ -189,6 +189,7 @@ var flashFictionPageNum = Math.ceil(flashFictionArticleNum / 3);
 function goBack() {
 	$("#fixed-tool").hide();
 	$("#reading").hide();
+	$("html,body").scrollTop();
 	$("#main-index").show();
 }
 
@@ -367,6 +368,7 @@ var prevFunc = function() {}
 var nextFunc = function() {}
 function readArticle(section, subSection, articleID) {
 	$("#main-index").hide();
+	$("html,body").scrollTop();
 	$("#fixed-tool").show();
 	$("#reading").show();
 
