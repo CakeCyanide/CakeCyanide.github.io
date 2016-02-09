@@ -324,7 +324,7 @@ function loadNovel(chapter) {
 	});
 }
 
-function loadSummary(section, page) {
+function loadSummary(section, subSection, page) {
 	var articleNum, pageNum;
 	if(section == "novel")
 		articleNum = novelArticleNum[activeChapter - 1];
@@ -342,17 +342,17 @@ function loadSummary(section, page) {
 		var articleID = articleNum - 3 * (page - 1) - col + 1;
 		if(articleID <= 0) {
 			for(var i = col; i <= 3; i++) {
-				deployArticle(section, i, 0);
+				deployArticle(section, subSection, i, 0);
 			}
 			break;
 		}
 		$("#" + section + "-" + col + "-title").html("讀取中...");
 		$("#" + section + "-" + col + "-content").html("讀取中...");
-		deployArticle(section, col, articleID);
+		deployArticle(section, subSection, col, articleID);
 	}
 }
 
-function deployArticle(section, col, articleID) {
+function deployArticle(section, subSection, col, articleID) {
 	//leave empty
 	if(articleID == 0) {
 		$("#" + section + "-" + col + "-cover").css("background-image", "none");
@@ -362,7 +362,11 @@ function deployArticle(section, col, articleID) {
 		return;
 	}
 
-	$.get("http://cakecyanide.github.io/text/" + section + "/" + articleID, function(data) {
+	var src;
+	if(section == "novel") src = "http://cakecyanide.github.io/text/novel/chapter-" + subSection + "/";
+	else src = "http://cakecyanide.github.io/text/" + section + "/";
+
+	$.get(src + articleID, function(data) {
 		var a = data.split("\n");
 		//load cover
 		$("#" + section + "-" + col + "-cover")
@@ -371,10 +375,12 @@ function deployArticle(section, col, articleID) {
 			backgroundSize: "cover"
 		})
 		.unbind().click(function() {
-			readArticle(section, null, articleID);
+			readArticle(section, subSection, articleID);
 		});
 		//load article
-		if(section == "short-story")
+		if(section == "novel")
+			$("#" + section + "-" + col + "-category").html("長篇小說");
+		else if(section == "short-story")
 			$("#" + section + "-" + col + "-category").html("短篇小說");
 		else if(section == "flash-fiction")
 			$("#" + section + "-" + col + "-category").html("極短篇小說");
@@ -386,7 +392,7 @@ function deployArticle(section, col, articleID) {
 	});
 }
 
-function deployPagingBtn(section) {
+function deployPagingBtn(section, subSection) {
 	var pageNum;
 	if(section == "novel")
 		pageNum = Math.ceil(novelArticleNum[activeChapter - 1] / 3);
@@ -395,9 +401,9 @@ function deployPagingBtn(section) {
 	else if(section == "flash-fiction")
 		pageNum = flashFictionPageNum;
 
-	var output = ["<button id=\"" + section + "-paging-btn-1\"class=\"btn\" onclick=\"loadSummary('" + section + "', 1)\">1</button>"];
+	var output = ["<button id=\"" + section + "-paging-btn-1\"class=\"btn\" onclick=\"loadSummary('" + section + "', " + subSection + ", 1)\">1</button>"];
 	for(var page = 2; page <= pageNum; page++)
-		output.push("<button id=\"" + section + "-paging-btn-" + page + "\" class=\"btn\" onclick=\"loadSummary('" + section + "', " + page + ")\">" + page + "</button>");
+		output.push("<button id=\"" + section + "-paging-btn-" + page + "\" class=\"btn\" onclick=\"loadSummary('" + section + "', " + subSection + ", " + page + ")\">" + page + "</button>");
 	if(section == "novel")
 		output.push("<button class=\"btn\" onclick=\"showLatestNovel()\">顯示最新一回</button>")
 	$("#" + section + "-paging").html(output.join(""));
@@ -460,11 +466,11 @@ function readArticle(section, subSection, articleID) {
 
 loadNovel(novelChapterNum);
 deployPagingBtn("novel");
-loadSummary("novel", 1);
+loadSummary("novel", novelChapterNum, 1);
 deployPagingBtn("short-story");
-loadSummary("short-story", 1);
+loadSummary("short-story", null, 1);
 deployPagingBtn("flash-fiction");
-loadSummary("flash-fiction", 1);
+loadSummary("flash-fiction", null, 1);
 </script>
 </body>
 </html>

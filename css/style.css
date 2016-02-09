@@ -216,6 +216,7 @@ section h2 {
 }
 #novel-wrapper {
 	display: none;
+	margin-top: 20px;
 }
 .grid {
 	float: left;
