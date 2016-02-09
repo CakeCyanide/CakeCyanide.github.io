@@ -182,14 +182,14 @@
 			<img src="./img/footer/chazel.jpg">
 			<div>
 				<span class="name">陳建佐 Chazel</span>
-				<span class="description">some text</span>
+				<span class="description">自我介紹不知道要寫些什麼。</span>
 			</div>
 		</div>
 		<div class="footer-col">
 			<img src="./img/footer/ryan.jpg">
 			<div>
 				<span class="name">陳柏翰 Ryan</span>
-				<span class="description">22歲，無房無車，求包養。</span>
+				<span class="description">我也是。</span>
 			</div>
 		</div>
 		<div style="clear: both;"></div>
@@ -270,7 +270,7 @@ function activeTab(chapter) {
 	document.getElementById("chapter-" + chapter + "-tab").className += " btn-active";
 	//content
 	loadNovel(chapter);
-	deployPagingBtn("novel");
+	deployPagingBtn("novel", chapter);
 	loadSummary("novel", chapter, 1);
 }
 function showAllNovel() {
@@ -465,11 +465,12 @@ function readArticle(section, subSection, articleID) {
 }
 
 loadNovel(novelChapterNum);
-deployPagingBtn("novel");
+deployPagingBtn("novel", 1);
+deployPagingBtn("novel", 2);
 loadSummary("novel", novelChapterNum, 1);
-deployPagingBtn("short-story");
+deployPagingBtn("short-story", null);
 loadSummary("short-story", null, 1);
-deployPagingBtn("flash-fiction");
+deployPagingBtn("flash-fiction", null);
 loadSummary("flash-fiction", null, 1);
 </script>
 </body>
