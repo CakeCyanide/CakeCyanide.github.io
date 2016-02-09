@@ -42,6 +42,7 @@
 	border: none !important;
 }
 .cover {
+	cursor: pointer;
 	opacity: 0.8;
 	transition: all 0.2s ease-out;
 	width: 310px;
@@ -296,6 +297,7 @@ footer {
 	font-size: 14px;
 }
 #reading {
+	display: none;
 	font-size: 0;
 }
 #reading h2 {
@@ -303,8 +305,8 @@ footer {
 }
 .reading-col {
 	display: inline-block;
-	padding-top: 20px;
-	padding-bottom: 15px;
+	padding: 20px 0 15px;
+	margin-bottom: 40px;
 	vertical-align: text-top;
 }
 .reading-col-1 {
@@ -314,7 +316,6 @@ footer {
 	width: 800px;
 	padding-right: 15px;
 	border-right: 1px dashed rgb(200, 200, 200);
-	margin-bottom: 40px;
 }
 .reading-col-2 {
 	width: 180px;
@@ -348,9 +349,6 @@ footer {
 	align-items: flex-start;
 	width: 100%;
 	margin: 15px 0;
-}
-.sub-btn:active {
-	top: 2px;
 }
 .sub-btn div {
 	text-align: left;
