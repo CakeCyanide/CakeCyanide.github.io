@@ -38,6 +38,9 @@
 	border: 1px solid rgb(175, 50, 95);
 	border-bottom: 3px solid rgb(175, 50, 95);
 }
+.hide {
+	display: none;
+}
 .no-border {
 	border: none !important;
 }
@@ -51,7 +54,7 @@
 .cover:hover {
 	opacity: 1;
 }
-#novel-cover {
+#latest-novel-cover {
 	width: 320px;
 	height: 240px;
 }
@@ -170,37 +173,37 @@ section h2 {
 	font: 36px "cwTeXMing", serif;
 	padding: 35px 0 25px;
 }
-.novel-wrapper {
+#latest-novel-wrapper {
 	font-size: 0;
 	margin: 20px 0 30px;
 	position: relative;
 }
-.novel-col {
+.latest-novel-col {
 	display: inline-block;
 	height: 240px;
 	vertical-align: text-top;
 }
-.novel-col-1 {
+.latest-novel-col-1 {
 	width: 320px;
 }
-.novel-col-2 {
+.latest-novel-col-2 {
 	width: 660px;
 	padding-left: 20px;
 }
-.novel-col-2 > span {
+.latest-novel-col-2 > span {
 	color: rgb(180, 0, 40);
 	font-size: 16px;
 	line-height: 1.2;
 	display: block;
 }
-.novel-col-2 > h3 {
+.latest-novel-col-2 > h3 {
 	color: rgb(180, 0, 40);
 	display: inline;
 	font-size: 24px;
 	line-height: 1.4;
 	cursor: pointer;
 }
-.novel-col-2 > p {
+.latest-novel-col-2 > p {
 	color: rgb(60, 60, 60);
 	font-size: 16px;
 	line-height: 1.6;
@@ -210,6 +213,9 @@ section h2 {
 	position: absolute;
 	bottom: 0;
 	right: 0;
+}
+#novel-wrapper {
+	display: none;
 }
 .grid {
 	float: left;
