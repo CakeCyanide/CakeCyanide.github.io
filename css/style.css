@@ -295,3 +295,8 @@ footer {
 	color: rgb(135, 135, 135);
 	font-size: 14px;
 }
+#reading-content {
+	color: rgb(60, 60, 60);
+	line-height: 1.8;
+	padding: 20px 0 40px;
+}
