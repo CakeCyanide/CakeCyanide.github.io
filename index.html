@@ -1,3 +1,7 @@
+<!--
+	todo:
+		make paging button
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +11,14 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Poiret+One">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/cwtexhei.css">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/cwtexming.css">
+	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body id="top">
-<div id="goto-top"><a href="#top">Top</a></div>
+<div id="goto-top">
+	<a href="#top">Top</a>
+</div>
 <div id="outer-wrapper">
 	<header>
 		<div><!-- for flex layout -->
@@ -29,6 +36,7 @@
 		</ul>
 	</nav>
 	<!-- end nav -->
+
 	<nav id="nav-fixed">
 		<span>Chazel</span>
 		<ul>
@@ -42,34 +50,114 @@
 	<div id="main-wrapper">
 		<section id="novel">
 			<h2>長篇小說 - 泣城</h2>
-			<label id="tab-label-2" for="tab-radio-2" onclick="activeTab(this)" class="active">掠食之章</label>
-			<label id="tab-label-1" for="tab-radio-1" onclick="activeTab(this)">豢養之章（完結）</label>
-			<input type="radio" name="chapter" id="tab-radio-2" checked>
-			<div id="chapter-wrapper-2" class="chapter-wrapper"></div>
-			<input type="radio" name="chapter" id="tab-radio-1">
-			<div id="chapter-wrapper-1" class="chapter-wrapper"></div>
+			<button id="chapter-2-tab" onclick="activeTab(2)" class="btn btn-active">掠食之章</button>
+			<button id="chapter-1-tab" onclick="activeTab(1)" class="btn">豢養之章（完結）</button>
+			<div class="novel-wrapper">
+				<div class="novel-col novel-col-1">
+					<div id="novel-cover" class="cover"></div>
+				</div>
+				<div class="novel-col novel-col-2">
+					<span>最新一回</span>
+					<h3 id="novel-title">讀取中</h3>
+					<p id="novel-content">讀取中</p>
+				</div>
+				<div class="select-chapter">
+					<button class="btn">其他章節</button>
+				</div>
+			</div>
 		</section>
-		<section id="short-story"></section>
-		<section id="flash-fiction" class="no-border"></section>
+		<!-- end section novel -->
+
+		<section id="short-story">
+			<h2>短篇小說</h2>
+			<div class="grid">
+				<div id="short-story-1-cover" class="cover"></div>
+				<span id="short-story-1-category" class="category"></span>
+				<h3 id="short-story-1-title"></h3>
+				<p id="short-story-1-content"></p>
+			</div>
+			<div class="grid">
+				<div id="short-story-2-cover" class="cover"></div>
+				<span id="short-story-2-category" class="category"></span>
+				<h3 id="short-story-2-title"></h3>
+				<p id="short-story-2-content"></p>
+			</div>
+			<div class="grid grid-last">
+				<div id="short-story-3-cover" class="cover"></div>
+				<span id="short-story-3-category" class="category"></span>
+				<h3 id="short-story-3-title"></h3>
+				<p id="short-story-3-content"></p>
+			</div>
+			<div style="clear: both;"></div>
+			<div id="short-story-paging" class="paging"></div>
+		</section>
+		<!-- end section short-story -->
+		
+		<section id="flash-fiction" class="no-border">
+			<h2>極短篇小說</h2>
+			<div class="grid">
+				<div id="flash-fiction-1-cover" class="cover"></div>
+				<span id="flash-fiction-1-category" class="category"></span>
+				<h3 id="flash-fiction-1-title"></h3>
+				<p id="flash-fiction-1-content"></p>
+			</div>
+			<div class="grid">
+				<div id="flash-fiction-2-cover" class="cover"></div>
+				<span id="flash-fiction-2-category" class="category"></span>
+				<h3 id="flash-fiction-2-title"></h3>
+				<p id="flash-fiction-2-content"></p>
+			</div>
+			<div class="grid grid-last">
+				<div id="flash-fiction-3-cover" class="cover"></div>
+				<span id="flash-fiction-3-category" class="category"></span>
+				<h3 id="flash-fiction-3-title"></h3>
+				<p id="flash-fiction-3-content"></p>
+			</div>
+			<div style="clear: both;"></div>
+			<div id="flash-fiction-paging" class="paging"></div>
+		</section>
+		<!-- end section flash-fiction -->
 	</div>
 	<!-- end main-wrapper -->
 </div>
 <!-- end outer-wrapper -->
 
-<footer id="about">
+<footer>
 	<div id="footer-wrapper">
+		<span>關於我們</span>
 		<div class="footer-col">
-			<img src="./img/footer/chazel.jpg">陳建佐 Chazel
+			<img src="./img/footer/chazel.jpg">
+			<div>
+				<span class="name">陳建佐 Chazel</span>
+				<span class="description">some text</span>
+			</div>
 		</div>
 		<div class="footer-col">
-			<img src="./img/footer/ryan.jpg">陳柏翰 Ryan
+			<img src="./img/footer/ryan.jpg">
+			<div>
+				<span class="name">陳柏翰 Ryan</span>
+				<span class="description">some text</span>
+			</div>
 		</div>
 		<div style="clear: both;"></div>
 	</div>
 </footer>
 
 <script>
-//smooth scrolling
+/*
+ * config
+ */
+var novelArticleNum = [21, 9];
+var shortStoryArticleNum = 2;
+var flashFictionArticleNum = 4;
+
+var novelChapterNum = novelArticleNum.length;
+var shortStoryPageNum = Math.ceil(shortStoryArticleNum / 3);
+var flashFictionPageNum = Math.ceil(flashFictionArticleNum / 3);
+
+/*
+ * smooth scrolling
+ */
 $(function() {
 	$('a[href*=#]:not([href=#])').click(function() {
 		if(location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -82,9 +170,10 @@ $(function() {
         }
     });
 });
-</script>
-<script>
-//nav
+
+/*
+ * nav display
+ */
 var nav = document.getElementById("nav");
 var navFixed = document.getElementById("nav-fixed");
 
@@ -101,20 +190,109 @@ function handleNav() {
 	}
 }
 window.addEventListener("scroll", function(){handleNav(); }, false);
-</script>
-<script>
-function activeTab(target) {
-	for(var i = 1; i <= 2; i++)
-		document.getElementById("tab-label-" + i).className = "";
-	target.className = "active";
+
+/*
+ * active tab
+ */
+function activeTab(chapter) {
+	//tab
+	for(var i = 1; i <= novelChapterNum; i++) {
+		var tab = document.getElementById("chapter-" + i + "-tab");
+		tab.className = tab.className.replace(/ btn-active/g, "");
+	}
+	document.getElementById("chapter-" + chapter + "-tab").className += " btn-active";
+	//content
+	loadNovel(chapter);
 }
-</script>
-<script>
-function loadLatestNovel(chapterID) {
+
+/*
+ * AJAX
+ */
+$.ajaxSetup({cache: false }); //not sure whether it will work
+function loadNovel(chapter) {
+	$.get("http://cakecyanide.github.io/text/novel/chapter-" + chapter + "/" + novelArticleNum[chapter - 1], function(data) {
+		var a = data.split("\n");
+		//load cover
+		$("#novel-cover").css({
+			background: "url('./img/cover/novel/" + a[0] + "') center center",
+			backgroundSize: "cover"
+		});
+		//load article
+		$("#novel-title").html(a[1]);
+		$("#novel-content").html(a[2].replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...");
+	});
 }
+
 function loadSummary(section, page) {
+	var articleNum, pageNum;
+	if(section == "short-story") {
+		articleNum = shortStoryArticleNum;
+		pageNum = shortStoryPageNum;
+	}
+	else if(section == "flash-fiction") {
+		articleNum = flashFictionArticleNum;
+		pageNum = flashFictionPageNum;
+	}
+	for(var p = 1; p <= pageNum; p++)
+		$("#" + section + "-paging-btn-" + p).removeClass("btn-active");
+	$("#" + section + "-paging-btn-" + page).addClass("btn-active");
+
+	for(var col = 1; col <= 3; col++) {
+		var articleID = articleNum - 3 * (page - 1) - col + 1;
+		if(articleID <= 0) {
+			for(var i = col; i <= 3; i++) {
+				deployArticle(section, i, 0);
+			}
+			break;
+		}
+		deployArticle(section, col, articleID);
+	}
 }
+function deployArticle(section, col, articleID) {
+	//leave empty
+	if(articleID == 0) {
+		$("#" + section + "-" + col + "-cover").css("background-image", "none");
+		$("#" + section + "-" + col + "-category").html("");
+		$("#" + section + "-" + col + "-title").html("");
+		$("#" + section + "-" + col + "-content").html("");
+		return;
+	}
+
+	$.get("http://cakecyanide.github.io/text/" + section + "/" + articleID, function(data) {
+		var a = data.split("\n");
+		//load cover
+		$("#" + section + "-" + col + "-cover").css({
+			background: "url('./img/cover/" + section + "/" + a[0] + "') center center",
+			backgroundSize: "cover"
+		});
+		//load article
+		if(section == "short-story")
+			$("#" + section + "-" + col + "-category").html("短篇小說");
+		else if(section == "flash-fiction")
+			$("#" + section + "-" + col + "-category").html("極短篇小說");
+		$("#" + section + "-" + col + "-title").html(a[1]);
+		$("#" + section + "-" + col + "-content").html(a[2].replace(/<br>/g, "").replace(/　/g, "").substring(0, 120) + "...");
+	});
+}
+function deployPagingBtn(section) {
+	var pageNum;
+	if(section == "short-story")
+		pageNum = shortStoryPageNum;
+	else if(section == "flash-fiction")
+		pageNum = flashFictionPageNum;
+
+	var output = ["<button id=\"" + section + "-paging-btn-1\"class=\"btn\" onclick=\"loadSummary('" + section + "', 1)\">1</button>"];
+	for(var page = 2; page <= pageNum; page++)
+		output.push("<button id=\"" + section + "-paging-btn-" + page + "\" class=\"btn\" onclick=\"loadSummary('" + section + "', " + page + ")\">" + page + "</button>");
+	$("#" + section + "-paging").html(output.join(""));
+}
+
+deployPagingBtn("short-story");
+deployPagingBtn("flash-fiction");
+
+loadNovel(novelChapterNum);
+loadSummary("short-story", 1);
+loadSummary("flash-fiction", 1);
 </script>
-<script src="./js/articles.js"></script>
 </body>
 </html>
